@@ -12,6 +12,7 @@ jobs:
           private_key: ${{ secrets.ALI_PK }}
           codeType: sca 
   sca:
+    needs: stc
     runs-on: ubuntu-latest
     steps:
       - name: codeScan
