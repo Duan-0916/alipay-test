@@ -10,7 +10,7 @@ jobs:
         with:
           parent_uid: ${{ secrets.ALI_PID }}
           private_key: ${{ secrets.ALI_PK }}
-          code_type: stc  # te
+          code_type: stc  # test
   sca:
     needs: stc
     runs-on: ubuntu-latest
