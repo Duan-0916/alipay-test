@@ -13,8 +13,6 @@ jobs:
           code_type: stc  
   sca:   # 开源合规
     runs-on: ubuntu-latest
-    needs: stc
-    if: ${{ always() }}   # 添加if条件，使得无论stc任务的结果如何都执行sca任务
     steps:
       - name: codeScan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
