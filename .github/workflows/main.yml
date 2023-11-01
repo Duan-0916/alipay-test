@@ -6,19 +6,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: codeScan
+        id: stc-scan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
         with:
           parent_uid: ${{ secrets.ALI_PID }}
           private_key: ${{ secrets.ALI_PK }}
-          code_type: stc  
+          code_type: stc
+      - name: Output Link
+        if: always()
+        run: |
+          echo "Link: [Code Scan Result](https://devops.cloud.alipay.com/project/5603361/${{ github.job }}/pipeline/details/${{ steps.stc-scan.outputs.result_link }})"
   sca:   # 开源合规
     runs-on: ubuntu-latest
     steps:
       - name: codeScan
+        id: sca-scan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
         with:
           parent_uid: ${{ secrets.ALI_PID }}
           private_key: ${{ secrets.ALI_PK }}
           code_type: sca
-
-
+      - name: Output Link
+        if: always()
+        run: |
+          echo "Link: [Code Scan Result](https://devops.cloud.alipay.com/project/5603361/${{ github.job }}/pipeline/details/${{ steps.sca-scan.outputs.result_link }})"
