@@ -12,6 +12,7 @@ import java.util.Date;
 public class BaseDo {
     private String id;
     // 测试用
+    //test
     private Date gmtCreate;
 
     private Date gmtModified;
