@@ -1,8 +1,6 @@
 name: Alipay Cloud Devops Codescan
 on:
-  pull_request:
-    branches:
-      - 2023-11-01test  
+  pull_request:  
 jobs:
   stc:   # 安全扫描
     runs-on: ubuntu-latest
