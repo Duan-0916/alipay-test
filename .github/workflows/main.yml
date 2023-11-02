@@ -17,6 +17,6 @@ jobs:
       - name: codeScan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
         with:
-          parent_uid: ${{ secrets.ALI_PID }}
-          private_key: ${{ secrets.ALI_PK }}
+          parent_uid: ${{ variables.ALI_PID }}
+          private_key: ${{ variables.ALI_PK }}
           scan_type: sca
