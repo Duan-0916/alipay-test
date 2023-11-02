@@ -1,6 +1,6 @@
 name: Alipay Cloud Devops Codescan
 on:
-  pull_request:  
+  pull_request_target:  
 jobs:
   stc:   # 安全扫描
     runs-on: ubuntu-latest
@@ -8,8 +8,8 @@ jobs:
       - name: codeScan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
         with:
-          parent_uid: ${{ github.ALI_PID }}
-          private_key: ${{ github.ALI_PK }}
+          parent_uid: ${{ secrets.ALI_PID }}
+          private_key: ${{ secrets.ALI_PK }}
           scan_type: stc  
   sca:   # 开源合规
     runs-on: ubuntu-latest
@@ -17,6 +17,6 @@ jobs:
       - name: codeScan
         uses: layotto/alipay-cloud-devops-codescan@test2023-10-16
         with:
-          parent_uid: ${{ github.ALI_PID }}
-          private_key: ${{ github.ALI_PK }}
+          parent_uid: ${{ secrets.ALI_PID }}
+          private_key: ${{ secrets.ALI_PK }}
           scan_type: sca
