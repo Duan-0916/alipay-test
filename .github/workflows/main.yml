@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: codeScan
-        uses: layotto/alipay-cloud-devops-codescan@dwl-20231129
+        uses: layotto/alipay-cloud-devops-codescan@uat-test
         with:
           parent_uid: ${{ secrets.ALI_PID }}
           private_key: ${{ secrets.ALI_PK }}
@@ -16,8 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: codeScan
-        uses: layotto/alipay-cloud-devops-codescan@dwl-20231129
+        uses: layotto/alipay-cloud-devops-codescan@uat-test
         with:
           parent_uid: ${{ secrets.ALI_PID }}
           private_key: ${{ secrets.ALI_PK }}
           scan_type: sca
+          cachePullPushPolicy: always
