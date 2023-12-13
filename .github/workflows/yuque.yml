@@ -13,8 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Publish to Preview Knowledge Base
-        uses: Duan-0916/sofadoc@master
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v2
         with:
-          yuqueNamespace: eg6z1a/qpbul9
-          yuqueSite: https://mosn-layotto.yuque.com/
+          java-version: '11'
+
+      - name: Publish to Preview Knowledge Base
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{
+              "yuqueNamespace": "eg6z1a/qpbul9",
+              "yuqueSite": "https://mosn-layotto.yuque.com/"
+          }' http://localhost:8080/sync
