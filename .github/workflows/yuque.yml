@@ -1,32 +1,25 @@
-name: Publish to Preview Knowledge Base
+name: Sync with Yuque
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  publish_to_preview:
+  sync:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-
-      - name: Publish to Preview Knowledge Base
-        run: |
-          # 设置操作系统为 Ubuntu 20.04
-          echo "::set-env name=DISTRIBUTION::ubuntu20.04"
-
-          # 执行你的自定义脚本文件，例如 publish.sh
-          # 在脚本中可以通过 $DISTRIBUTION 变量获取操作系统环境
-          chmod +x publish.sh
-          ./publish.sh
+    - name: Call Sync API
+      run: |
+        curl --location 'http://localhost:8888/v1/rest/sync' \
+          --header 'Content-Type: application/json' \
+          --data '{
+            "inputs": {
+              "yuqueNamespace": "eg6z1a/qpbul9",
+              "yuqueSite": "https://mosn-layotto.yuque.com/"
+            }
+          }'
