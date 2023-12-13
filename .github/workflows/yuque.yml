@@ -23,7 +23,10 @@ jobs:
 
       - name: Publish to Preview Knowledge Base
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{
-              "yuqueNamespace": "eg6z1a/qpbul9",
-              "yuqueSite": "https://mosn-layotto.yuque.com/"
-          }' http://localhost:8080/sync
+          # 设置操作系统为 Ubuntu 20.04
+          echo "::set-env name=DISTRIBUTION::ubuntu20.04"
+
+          # 执行你的自定义脚本文件，例如 publish.sh
+          # 在脚本中可以通过 $DISTRIBUTION 变量获取操作系统环境
+          chmod +x publish.sh
+          ./publish.sh
