@@ -3,10 +3,10 @@ name: Publish to Preview Knowledge Base
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   publish_to_preview:
