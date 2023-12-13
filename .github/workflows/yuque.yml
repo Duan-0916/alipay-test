@@ -1,0 +1,23 @@
+name: Publish to Preview Knowledge Base
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  publish_to_preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Publish to Preview Knowledge Base
+        uses: antvis/git-to-yuque@v1
+        with:
+          yuqueNamespace: eg6z1a/qpbul9
+          yuqueSite: https://mosn-layotto.yuque.com/
