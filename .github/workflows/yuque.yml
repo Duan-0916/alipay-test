@@ -13,11 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Publish to Preview Knowledge Base
-        uses: antvis/git-to-yuque@v1
+        uses: Duan-0916/sofadoc@master
         with:
           yuqueNamespace: eg6z1a/qpbul9
           yuqueSite: https://mosn-layotto.yuque.com/
