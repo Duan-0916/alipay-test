@@ -19,8 +19,8 @@ jobs:
       
       - name: Call Sync API
         run: |
-          echo $GITHUB_REPOSITORY
-          
+          echo ${{ github.repository }}
+          echo ${{ steps.get_commit_id.outputs.commit_id }}
           curl --location 'http://47.243.86.137:8888/v1/rest/sync' \
             --header 'Content-Type: application/json' \
             --data '{
@@ -28,7 +28,7 @@ jobs:
                 "yuqueNamespace": "eg6z1a/qpbul9",
                 "yuqueSite": "https://mosn-layotto.yuque.com/",
                 "yuqueToken":"TOdAggX2qQA20byXdw1qmfiJ2INwgATyf0uCUUM9",
-                "gitRepo": "$GITHUB_REPOSITORY",
+                "gitRepo": "${{ github.repository }}",
                 "gitDocRoot": "/",
                 "gitDocToc": "SUMMARY.md",
                 "gitCommitId": "${{ steps.get_commit_id.outputs.commit_id }}",
