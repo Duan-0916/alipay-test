@@ -28,7 +28,7 @@ jobs:
                 "yuqueNamespace": "eg6z1a/qpbul9",
                 "yuqueSite": "https://mosn-layotto.yuque.com/",
                 "yuqueToken":"TOdAggX2qQA20byXdw1qmfiJ2INwgATyf0uCUUM9",
-                "gitRepo": "${{ github.repository }}",
+                "gitRepo": "https://github.com/${{ github.repository }}",
                 "gitDocRoot": "/",
                 "gitDocToc": "SUMMARY.md",
                 "gitCommitId": "${{ steps.get_commit_id.outputs.commit_id }}",
