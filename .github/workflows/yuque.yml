@@ -19,6 +19,8 @@ jobs:
       
       - name: Call Sync API
         run: |
+          echo $GITHUB_REPOSITORY
+          
           curl --location 'http://47.243.86.137:8888/v1/rest/sync' \
             --header 'Content-Type: application/json' \
             --data '{
