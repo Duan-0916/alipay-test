@@ -4,22 +4,35 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
 
-    - name: Call Sync API
-      run: |
-        curl --location 'http://localhost:8888/v1/rest/sync' \
-          --header 'Content-Type: application/json' \
-          --data '{
-            "inputs": {
-              "yuqueNamespace": "eg6z1a/qpbul9",
-              "yuqueSite": "https://mosn-layotto.yuque.com/"
-            }
-          }'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Get latest commit ID
+        id: get_commit_id
+        run: echo "::set-output name=commit_id::$(git rev-parse HEAD)"
+      
+      - name: Call Sync API
+        run: |
+          curl --location 'http://47.243.86.137:8888/v1/rest/sync' \
+            --header 'Content-Type: application/json' \
+            --data '{
+              "inputs": {
+                "yuqueNamespace": "eg6z1a/qpbul9",
+                "yuqueSite": "https://mosn-layotto.yuque.com/",
+                "yuqueToken":"TOdAggX2qQA20byXdw1qmfiJ2INwgATyf0uCUUM9",
+                "gitRepo": "${{ github.repository }}",
+                "gitDocRoot": "/",
+                "gitDocToc": "SUMMARY.md",
+                "gitCommitId": "${{ steps.get_commit_id.outputs.commit_id }}",
+                "gitBranch": "main"
+              }
+            }'
