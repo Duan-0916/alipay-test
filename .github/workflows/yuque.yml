@@ -20,7 +20,7 @@ jobs:
       - name: Call Sync API
         run: |
           ping 47.243.86.137 -c 3
-          curl --location --request POST 'http://47.243.86.137:8888/v1/rest/sync' \
+          curl --location --request POST 'http://47.243.86.137:8777/v1/rest/sync' \
             --header 'Content-Type: application/json' \
             --data '{
               "inputs": {
