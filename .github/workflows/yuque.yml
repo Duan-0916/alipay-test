@@ -22,9 +22,6 @@ jobs:
       
       - name: Call Sync API
         run: |
-          echo ${{ github.repository }}
-          echo ${{ steps.get_commit_id.outputs.commit_id }}
-        
           curl --location 'http://47.243.86.137:8888/v1/rest/sync' \
             --header 'Content-Type: application/json' \
             --data '{
