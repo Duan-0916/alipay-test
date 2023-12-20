@@ -1,5 +1,4 @@
 name: Sync with Yuque
-
 on:
   push:
     branches:
@@ -7,11 +6,9 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -29,7 +26,7 @@ jobs:
                 "yuqueNamespace": "eg6z1a/qpbul9",
                 "yuqueSite": "https://mosn-layotto.yuque.com/",
                 "yuqueToken":"TOdAggX2qQA20byXdw1qmfiJ2INwgATyf0uCUUM9",
-                "gitRepo": "https://github.com/${{ github.repository }}",
+                "gitRepo": "$GITHUB_REPOSITORY",
                 "gitDocRoot": "/",
                 "gitDocToc": "SUMMARY.md",
                 "gitCommitId": "${{ steps.get_commit_id.outputs.commit_id }}",
