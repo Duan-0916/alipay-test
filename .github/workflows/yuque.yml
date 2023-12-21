@@ -20,6 +20,8 @@ jobs:
       
       - name: Call Sync API
         run: |
+          echo ${{ steps.get_commit_id.outputs.commit_id }}
+          echo https://github.com/${{ github.repository }}
           curl --location --request POST 'http://127.0.0.1:8777/v1/rest/sync' \
             --header 'Content-Type: application/json' \
             --data '{
