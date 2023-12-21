@@ -8,15 +8,12 @@ on:
       - main
 jobs:
   sync:
-    runs-on: ubuntu-latest
-    # runs-on: self-hosted
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Get latest commit ID
-        id: get_commit_id
-        run: echo "::set-output name=commit_id::$(git rev-parse HEAD)"
+    
       
       - name: Call Sync API
         run: |
@@ -31,7 +28,6 @@ jobs:
                 "gitRepo": "https://github.com/${{ github.repository }}",
                 "gitDocRoot": "/",
                 "gitDocToc": "SUMMARY.md",
-                "gitCommitId": "${{ steps.get_commit_id.outputs.commit_id }}",
                 "gitBranch": "main"
               }
             }'
