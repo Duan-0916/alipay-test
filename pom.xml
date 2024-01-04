@@ -21,7 +21,6 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws-messaging -->
 
         <dependency>
             <groupId>com.amazonaws</groupId>
